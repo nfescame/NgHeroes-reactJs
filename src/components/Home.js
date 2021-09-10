@@ -7,7 +7,7 @@ function Home() {
     <div>
       Home
       <Navbar />
-      {/* <Link to='/listheroes'>list</Link> */}
+      <Link to='/listheroes'>list</Link>
     </div>
   );
 }
