@@ -1,14 +1,20 @@
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+
 import Home from "./Home";
 import ListHeroes from "./ListHeroes";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { BrowserRouter, Route } from "react-router-dom";
+import Details from "./Details";
 
 function App() {
   return (
     <div>
       <BrowserRouter>
         <Route exact path='/' component={Home} />
-        <Route path='/listheroes' component={ListHeroes} />
+        <Switch>
+          <Route path='/listheroes' component={ListHeroes} />
+          <Route path='/details/:HeroId' component={Details} />
+        </Switch>
       </BrowserRouter>
     </div>
   );
