@@ -1,7 +1,53 @@
-.bg-home {
-  background-image: url("./assents/img/home7.jpg");
-  background-repeat: no-repeat;
-  background-position: right;
-  background-size: 100%;
-  height: 70rem;
+.event {
+  margin-bottom: 20px;
+  position: relative;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  width: 20%;
+}
+
+.event .content {
+  background: rgb(39, 64, 201);
+  color: #fff;
+  bottom: 0;
+  height: 68px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  transition: all 0.5s ease;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.event h3 {
+  font: bold 1em/1.125em "Montserrat", Arial, Helvetica, sans-serif;
+  letter-spacing: 2px;
+  height: 68px;
+  margin: 0;
+  padding-top: 20px;
+  text-transform: uppercase;
+}
+
+.event .rollover {
+  border-top: 1px solid #59e4df;
+  font-size: 0.9375em;
+  line-height: 1.4em;
+  padding: 18px 20px;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+
+.event .rollover p {
+  margin: 0;
+  font-family: "Montserrat", Arial, Helvetica, sans-serif;
+}
+
+.event:hover .content {
+  background: rgba(87, 25, 25, 0.4);
+  height: 100%;
+}
+
+.event:hover .rollover {
+  opacity: 1;
 }

@@ -20,41 +20,53 @@ class ListHeroes extends React.Component {
     }
   };
   filterHeroesName = async (text) => {
+    let newArr = [];
     try {
       const response = await axios.get(
-        `https://akabab.github.io/superhero-api/api/id/${text}.json`
+        `https://akabab.github.io/superhero-api/api/all.json`
       );
-      this.setState({ allHeroes: [response.data] });
+
+      newArr = [...response.data];
+      newArr.map((hero) => {
+        if (hero.name.toLowerCase().includes(text)) {
+          newArr = hero;
+        }
+      });
+      console.log(newArr);
+      this.setState({ allHeroes: [newArr] });
     } catch (err) {
       console.error(err);
     }
-    console.log(this.state.allHeroes);
   };
 
   render() {
     return (
-      <div>
+      <div className='row mx-2'>
         <SearchBar filterHeroesName={this.filterHeroesName} />
-        <div className='w-75'>
-          <div className='row row-cols-2 row-cols-lg-5 g-5 g-lg-2'>
-            {this.state.allHeroes.map((hero) => {
-              return (
-                <Link to={`/details/${hero.id}`} className='' key={hero.id}>
-                  <div className='card col' style={{ width: "10rem" }}>
-                    <img
-                      src={hero.images.md}
-                      className='card-img-top'
-                      alt={hero.name}
-                    />
-                    <div className='card-body'>
-                      <h6 className='card-title'>{hero.name}</h6>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
+        {this.state.allHeroes.map((hero) => {
+          return (
+            <Link className='event' to={`/details/${hero.id}`} key={hero.id}>
+              <img
+                src={hero.images.md}
+                alt='description'
+                style={{ width: "100%" }}
+              />
+
+              <div className='content'>
+                <h3>{hero.name}</h3>
+
+                <div className='rollover'>
+                  <p>Full Name: {hero.biography.fullName}</p>
+                  <p>First Appearance: {hero.biography.firstAppearance}</p>
+                  <p>Publisher: {hero.biography.publisher}</p>
+                  <p>Place Of Birth: {hero.biography.placeOfBirth}</p>
+                  <p>Group Affiliation: {hero.connections.groupAffiliation}</p>
+                  <h3>Click for more details.</h3>
+                </div>
+              </div>
+            </Link>
+          );
+        })}
       </div>
     );
   }

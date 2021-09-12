@@ -17,8 +17,8 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <div className='d-flex justify-content-center my-3'>
-        <label>Search Heroes:</label>
+      <div className='d-flex justify-content-start my-3'>
+        <label>Search Character:</label>
         <input
           type='text'
           className='input search-bar ms-2'

@@ -33,10 +33,10 @@ class Details extends React.Component {
   render() {
     return (
       <div>
-        <div className='card' style={{ width: "20rem" }}>
+        <div className='card m-4' style={{ width: "19rem" }}>
           <img
             src={this.state.img}
-            className='card-img-top'
+            className='card-img-top rounded'
             alt={this.state.id}
           />
           <div className='card-body'>
