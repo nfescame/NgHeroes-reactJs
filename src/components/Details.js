@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
+// import { FaRegThumbsUp, FaRegThumbsDown } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 class Details extends React.Component {
@@ -67,12 +67,12 @@ class Details extends React.Component {
               Back to List
             </Link>
             <div className='d-flex'>
-              <h3 className='mx-3'>
+              {/* <h3 className='mx-3'>
                 <FaRegThumbsUp />
               </h3>
               <h3 className='mx-3'>
                 <FaRegThumbsDown />
-              </h3>
+              </h3> */}
             </div>
           </div>
         </div>
