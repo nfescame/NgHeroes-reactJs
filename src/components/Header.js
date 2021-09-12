@@ -18,7 +18,7 @@ function Header() {
           </div>
         </div>
       </Link>
-      <Link className='event' to='/listheroes'>
+      <Link className='event' to='/topfive'>
         <img src={Img2} alt='description' style={{ width: "100%" }} />
 
         <div className='content'>
