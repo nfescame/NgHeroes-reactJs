@@ -1,4 +1,5 @@
 import React from "react";
+//import "bootstrap/dist/css/bootstrap.min.css"
 
 class SearchBar extends React.Component {
   state = {
@@ -18,7 +19,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <div className='d-flex justify-content-start my-3'>
-        <label>Search Character:</label>
+        <label>Search Heroes and Villains:</label>
         <input
           type='text'
           className='input search-bar ms-2'

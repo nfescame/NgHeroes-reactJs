@@ -1,7 +1,9 @@
 import React from "react";
+//import "bootstrap/dist/css/bootstrap.min.css"
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import NewPlayer from "./NewPlayer";
 
 // https://akabab.github.io/superhero-api/api/all.json
 class ListHeroes extends React.Component {
@@ -14,7 +16,7 @@ class ListHeroes extends React.Component {
       const response = await axios.get(
         "https://akabab.github.io/superhero-api/api/all.json"
       );
-      this.setState({ allHeroes: response.data });
+      this.setState({ allHeroes: [...response.data] });
     } catch (err) {
       console.error(err);
     }
@@ -41,6 +43,12 @@ class ListHeroes extends React.Component {
 
   render() {
     return (
+    <div>
+
+      <div>
+        <NewPlayer />
+      </div>
+
       <div className='row mx-2'>
         <SearchBar filterHeroesName={this.filterHeroesName} />
         {this.state.allHeroes.map((hero) => {
@@ -68,6 +76,7 @@ class ListHeroes extends React.Component {
           );
         })}
       </div>
+    </div>
     );
   }
 }
