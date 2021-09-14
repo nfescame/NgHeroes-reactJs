@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import ListHeroes from "./ListHeroes";
 import Details from "./Details";
+import MySquad from "./MySquad";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Switch>
           <Route path='/listheroes' component={ListHeroes} />
           <Route path='/details/:HeroId' component={Details} />
+          <Route path='/mysquad' component={MySquad} />
         </Switch>
       </BrowserRouter>
     </div>
