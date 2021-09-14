@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 //import "bootstrap/dist/css/bootstrap.min.css"
 import Img1 from "../assents/img/home7.jpg";
-import Img2 from "../assents/img/home1.jpg";
-import Img3 from "../assents/img/home6.jpg";
+import Img3 from "../assents/img/home2.jpg";
 
 function Header() {
   return (
@@ -18,19 +17,8 @@ function Header() {
           </div>
         </div>
       </Link>
-      <Link className='float-md-start' to='/topfive'>
-        <img src={Img2} alt='description' style={{ width: "100%" }} />
 
-        <div className='content'>
-          <h3>Make Your Squad</h3>
-
-          <div className='rollover'>
-            <p>Here you´ll be able to create your own Squad and send it to friends</p>
-          </div>
-        </div>
-      </Link>
-
-      <Link className='float-md-start' to='/listheroes'>
+      <Link className='float-md-start' to='/mysquad'>
         <img src={Img3} alt='description' style={{ width: "100%" }} />
 
         <div className='content'>

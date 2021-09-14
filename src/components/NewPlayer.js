@@ -1,7 +1,7 @@
-import axios from "axios";
+// import axios from "axios";
 import React from "react";
 //import "bootstrap/dist/css/bootstrap.min.css"
-import reactDom from "react-dom";
+// import reactDom from "react-dom";
 
 class NewPlayer extends React.Component {
   render() {
@@ -10,12 +10,12 @@ class NewPlayer extends React.Component {
         <div>
           <p>
             <h4>Insert your Name</h4>
-            <form className="namePlayer">
+            <form className='namePlayer'>
               <input
-                type="text"
-                id="namePlayer"
-                placeholder="Name"
-                label="Name"
+                type='text'
+                id='namePlayer'
+                placeholder='Name'
+                label='Name'
                 onChange={this.props.handleChangeName}
                 value={this.props.state.playerName}
               />
@@ -23,12 +23,12 @@ class NewPlayer extends React.Component {
           </p>
           <p>
             <h4>Insert a name for your Squad</h4>
-            <form className="nameSquad">
+            <form className='nameSquad'>
               <input
-                type="text"
-                id="nameSquad"
-                placeholder="Type a name for your Squad"
-                label="Squad"
+                type='text'
+                id='nameSquad'
+                placeholder='Type a name for your Squad'
+                label='Squad'
                 onChange={this.props.handleChangeSquad}
                 value={this.props.state.squadName}
               />
@@ -39,7 +39,7 @@ class NewPlayer extends React.Component {
 
         <div>
           <p>
-            <button type="submit" onClick={this.props.handleSubmitAll}>
+            <button type='submit' onClick={this.props.handleSubmitAll}>
               Save
             </button>
           </p>
