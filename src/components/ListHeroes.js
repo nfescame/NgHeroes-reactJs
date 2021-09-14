@@ -1,11 +1,10 @@
-import React, { cloneElement } from "react";
+import React from "react";
 //import "bootstrap/dist/css/bootstrap.min.css"
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import NewPlayer from "./NewPlayer";
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
-import img from "../assents/img/home3.jpg";
 
 // https://akabab.github.io/superhero-api/api/all.json
 class ListHeroes extends React.Component {
@@ -22,6 +21,7 @@ class ListHeroes extends React.Component {
       const response = await axios.get(
         "https://akabab.github.io/superhero-api/api/all.json"
       );
+
       this.setState({ allHeroes: [...response.data] });
     } catch (err) {
       console.error(err);
