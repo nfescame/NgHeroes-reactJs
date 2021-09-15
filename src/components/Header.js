@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
-//import "bootstrap/dist/css/bootstrap.min.css"
 import Img1 from "../assents/img/home7.jpg";
 import Img3 from "../assents/img/home2.jpg";
 
 function Header() {
   return (
     <div className='container my-4 d-flex'>
-      <Link className='float-md-start' to='/listheroes'>
+      <Link className='float-md-start event eventHeader' to='/listheroes'>
         <img src={Img1} alt='description' style={{ width: "100%" }} />
 
         <div className='content'>
@@ -18,7 +17,7 @@ function Header() {
         </div>
       </Link>
 
-      <Link className='float-md-start' to='/mysquad'>
+      <Link className='float-md-start event eventHeader' to='/mysquad'>
         <img src={Img3} alt='description' style={{ width: "100%" }} />
 
         <div className='content'>
