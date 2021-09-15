@@ -14,6 +14,12 @@ class ListHeroes extends React.Component {
     squadName: "",
     allFavFive: [],
     allFavImg: [],
+    combat: 0,
+    durability: 0,
+    intelligence: 0,
+    power: 0,
+    speed: 0,
+    strength: 0,
   };
 
   componentDidMount = async () => {
@@ -40,7 +46,7 @@ class ListHeroes extends React.Component {
           newArr.push(hero);
         }
       });
-      console.log(newArr);
+      console.log("arr", newArr);
       this.setState({ allHeroes: [...newArr] });
     } catch (err) {
       console.error(err);
@@ -57,6 +63,7 @@ class ListHeroes extends React.Component {
 
   handleSubmitAll = (event) => {
     event.preventDefault();
+
     if (this.state.allFavFive.length === 5) {
       const stateClone = { ...this.state };
       delete stateClone.allHeroes;
@@ -81,20 +88,49 @@ class ListHeroes extends React.Component {
       this.setState({ allFavFive: [...allFavFiveClone] });
 
       const img = this.state.allHeroes[index].images.md;
+      const combat = this.state.allHeroes[index].powerstats.combat;
+      const durability = this.state.allHeroes[index].powerstats.durability;
+      const intelligence = this.state.allHeroes[index].powerstats.intelligence;
+      const power = this.state.allHeroes[index].powerstats.power;
+      const speed = this.state.allHeroes[index].powerstats.speed;
+      const strength = this.state.allHeroes[index].powerstats.strength;
+
       let cloneImg = [...this.state.allFavImg];
+      let cloneCombat = [this.state.combat];
+      let cloneDurability = [this.state.durability];
+      let cloneIntelligence = [this.state.intelligence];
+      let clonePower = [this.state.power];
+      let cloneSpeed = [this.state.speed];
+      let cloneStrength = [this.state.strength];
+
       cloneImg.push({ img });
-      this.setState({ allFavImg: [...cloneImg] });
+      cloneCombat = parseInt(cloneCombat) + parseInt(combat);
+      cloneDurability = parseInt(cloneDurability) + parseInt(durability);
+      cloneIntelligence = parseInt(cloneIntelligence) + parseInt(intelligence);
+      clonePower = parseInt(clonePower) + parseInt(power);
+      cloneSpeed = parseInt(cloneSpeed) + parseInt(speed);
+      cloneStrength = parseInt(cloneStrength) + parseInt(strength);
+
+      this.setState({
+        allFavImg: [...cloneImg],
+        combat: cloneCombat,
+        durability: cloneDurability,
+        intelligence: cloneIntelligence,
+        power: clonePower,
+        speed: cloneSpeed,
+        strength: cloneStrength,
+      });
     } else {
       alert("Character be select");
     }
   };
 
   render() {
-    console.log(this.state.allFavImg);
+    console.log(this.state);
     return (
       <div>
         <NavBar />
-        <div className='d-flex'>
+        <div className='d-flex container p-3'>
           <div>
             <NewPlayer
               handleChangeName={this.handleChangeName}
@@ -103,9 +139,18 @@ class ListHeroes extends React.Component {
               handleSubmitAll={this.handleSubmitAll}
             />
           </div>
-          <div>
+          <div className='d-flex'>
             {this.state.allFavImg.map((img) => {
-              return <img src={img.img} alt='img' className='w-25' />;
+              return (
+                <div className='p-3'>
+                  <img
+                    className='m-0 rounded-circle border border-primary'
+                    src={img.img}
+                    alt='description'
+                    style={{ width: "8rem" }}
+                  />
+                </div>
+              );
             })}
           </div>
         </div>
