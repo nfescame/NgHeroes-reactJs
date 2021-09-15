@@ -1,5 +1,4 @@
 import React from "react";
-
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import NewPlayer from "./NewPlayer";
@@ -24,20 +23,26 @@ class ListHeroes extends React.Component {
 
   componentDidMount = async () => {
     let id = this.props.match.params.obj;
+    if (id) {
+      try {
+        const response = await axios.get(
+          `https://ironrest.herokuapp.com/NGHeroes/${id}`
+        );
 
-    try {
-      const response = await axios.get(
-        `https://ironrest.herokuapp.com/NGHeroes/${id}`
-      );
-
-      this.setState({ playerName: [response.data.playerName] });
-      this.setState({ squadName: [response.data.squadName] });
-      this.setState({ allFavImg: [...response.data.allFavImg] });
-      this.setState({ allFavFive: [...response.data.allFavFive] });
-    } catch (err) {
-      console.error(err);
+        this.setState({ playerName: [response.data.playerName] });
+        this.setState({ squadName: [response.data.squadName] });
+        this.setState({ allFavImg: [...response.data.allFavImg] });
+        this.setState({ allFavFive: [...response.data.allFavFive] });
+        this.setState({ combat: [response.data.combat] });
+        this.setState({ durability: [response.data.durability] });
+        this.setState({ intelligence: [response.data.intelligence] });
+        this.setState({ power: [response.data.power] });
+        this.setState({ speed: [response.data.speed] });
+        this.setState({ strength: [response.data.strength] });
+      } catch (err) {
+        console.error(err);
+      }
     }
-
     try {
       const response = await axios.get(
         "https://akabab.github.io/superhero-api/api/all.json"
@@ -78,35 +83,46 @@ class ListHeroes extends React.Component {
 
   handleSubmitAll = async (event) => {
     event.preventDefault();
-    console.log(this.state.allFavFive.length);
-    if (this.state.allFavFive.length === 5) {
+
+    if (
+      this.state.allFavFive.length === 5 &&
+      this.state.playerName &&
+      this.state.squadName
+    ) {
       if (!this.props.match.params.obj) {
         const stateClone = { ...this.state };
         delete stateClone.allHeroes;
         axios
           .post("https://ironrest.herokuapp.com/NGHeroes", stateClone)
           .then((response) => {
-            this.props.history.push("/");
+            this.props.history.push("/mysquad");
           })
 
           .catch((err) => console.error(err));
       } else {
         console.log("edit");
-        let id = this.props.match.params.obj;
-        try {
-          const response = await axios.put(
-            `https://ironrest.herokuapp.com/NGHeroes/${id}`,
-            this.state
-          );
-          console.log(response);
-          // Navegar de volta pra rota /
-          this.props.history.push("/");
-        } catch (err) {
-          console.error(err);
-        }
+        this.editSquad(event);
       }
     } else {
-      alert("preencha todos os campos");
+      alert("Campos obrigatórios: Name, Name Squaq e 5 personagens");
+    }
+  };
+
+  editSquad = async (event) => {
+    event.preventDefault();
+    let id = this.props.match.params.obj;
+    const stateClone = { ...this.state };
+    delete stateClone.allHeroes;
+    try {
+      const response = await axios.put(
+        `https://ironrest.herokuapp.com/NGHeroes/${id}`,
+        stateClone
+      );
+      console.log(response);
+
+      this.props.history.push("/mysquad");
+    } catch (err) {
+      console.error(err.response);
     }
   };
 
@@ -159,17 +175,46 @@ class ListHeroes extends React.Component {
 
   deleteItem = (event, index) => {
     let cloneArrImg = [...this.state.allFavImg];
+    let cloneArrFive = [...this.state.allFavFive];
+    let cloneCombat = [this.state.combat];
+    let cloneDurability = [this.state.durability];
+    let cloneIntelligence = [this.state.intelligence];
+    let clonePower = [this.state.power];
+    let cloneSpeed = [this.state.speed];
+    let cloneStrength = [this.state.strength];
 
+    let id = parseInt(cloneArrFive[index]);
+
+    this.state.allHeroes.map((hero) => {
+      if (hero.id === id) {
+        cloneCombat -= hero.powerstats.combat;
+        cloneDurability -= hero.powerstats.durability;
+        cloneIntelligence -= hero.powerstats.intelligence;
+        clonePower -= hero.powerstats.power;
+        cloneSpeed -= hero.powerstats.speed;
+        cloneStrength -= hero.powerstats.strength;
+      }
+    });
     cloneArrImg.splice(index, 1);
+    cloneArrFive.splice(index, 1);
 
-    this.setState({ allFavImg: [...cloneArrImg] });
+    this.setState({
+      allFavImg: [...cloneArrImg],
+      allFavFive: [...cloneArrFive],
+      combat: cloneCombat,
+      durability: cloneDurability,
+      intelligence: cloneIntelligence,
+      power: clonePower,
+      speed: cloneSpeed,
+      strength: cloneStrength,
+    });
   };
 
   render() {
     return (
       <div>
         <NavBar />
-        <div className='d-flex p-2 '>
+        <div className='boxImg p-2'>
           <div>
             <NewPlayer
               handleChangeName={this.handleChangeName}
@@ -206,7 +251,21 @@ class ListHeroes extends React.Component {
         </div>
 
         <div className='row mx-2'>
+          <div>
+            <input
+              type='checkbox'
+              class='btn-check'
+              id='btn-check'
+              autocomplete='off'
+              name='block'
+              onClick={this.props.toogle}
+            />
+            <label class='btn btn-primary' htmlFor='btn-check'>
+              Create Squad
+            </label>
+          </div>
           <SearchBar filterHeroesName={this.filterHeroesName} />
+
           {this.state.allHeroes.map((hero, index) => {
             return (
               <div className='event'>

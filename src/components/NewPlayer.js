@@ -1,8 +1,4 @@
-// import axios from "axios";
 import React from "react";
-//import "bootstrap/dist/css/bootstrap.min.css"
-// import reactDom from "react-dom";
-
 class NewPlayer extends React.Component {
   render() {
     return (
