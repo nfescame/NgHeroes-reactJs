@@ -2,57 +2,57 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <div>
-      <footer class='footer-distributed'>
-        <div class='footer-left'>
+      <footer className='footer-distributed'>
+        <div className='footer-left'>
           <img src='' alt='' />
 
-          <p class='footer-links'>
+          <p className='footer-links'>
             <Link to='#'>Home</Link> ·<Link to='#'>About</Link> ·
             <Link to='#'>Pricing</Link> ·<Link to='#'>About</Link> ·
             <Link to='#'>Faq</Link> ·<Link to='#'>Contact</Link>
           </p>
 
-          <p class='footer-company-name'>Bangin &copy; 2018</p>
+          <p className='footer-company-name'>Bangin &copy; 2018</p>
         </div>
 
-        <div class='footer-center'>
+        <div className='footer-center'>
           <div>
-            <i class='fa fa-map-marker'></i>
+            <i className='fa fa-map-marker'></i>
             <p>
               <span>21 Revolution Street</span> Rutland, VT
             </p>
           </div>
 
           <div>
-            <i class='fa fa-phone'></i>
+            <i className='fa fa-phone'></i>
             <p>911</p>
           </div>
 
           <div>
-            <i class='fa fa-envelope'></i>
+            <i className='fa fa-envelope'></i>
             <p>
-              <a href='mailto:support@company.com'>support@company.com</a>
+              <Link to='mailto:support@company.com'>support@company.com</Link>
             </p>
           </div>
         </div>
 
-        <div class='footer-right'>
-          <p class='footer-company-about'>
+        <div className='footer-right'>
+          <p className='footer-company-about'>
             <span>About this guy</span> Blah Blah..Blah blah bl;ah blah
           </p>
 
-          <div class='footer-icons'>
-            <Link href='#'>
-              <i class='fa fa-facebook'></i>
+          <div className='footer-icons'>
+            <Link to='#'>
+              <i className='fa fa-facebook'></i>
             </Link>
-            <Link href='#'>
-              <i class='fa fa-twitter'></i>
+            <Link to='#'>
+              <i className='fa fa-twitter'></i>
             </Link>
-            <Link href='#'>
-              <i class='fa fa-linkedin'></i>
+            <Link to='#'>
+              <i className='fa fa-linkedin'></i>
             </Link>
-            <Link href='#'>
-              <i class='fa fa-github'></i>
+            <Link to='#'>
+              <i className='fa fa-github'></i>
             </Link>
           </div>
         </div>
