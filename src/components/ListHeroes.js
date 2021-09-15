@@ -130,7 +130,7 @@ class ListHeroes extends React.Component {
     return (
       <div>
         <NavBar />
-        <div className='d-flex p-3 '>
+        <div className='d-flex p-2 '>
           <div>
             <NewPlayer
               handleChangeName={this.handleChangeName}
@@ -139,7 +139,7 @@ class ListHeroes extends React.Component {
               handleSubmitAll={this.handleSubmitAll}
             />
           </div>
-          <div className='d-flex'>
+          <div className='imgSelect d-flex'>
             {this.state.allFavImg.map((img) => {
               return (
                 <div className='p-3'>
