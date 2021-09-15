@@ -2,6 +2,7 @@
 import React from "react";
 import NavBar from "./NavBar";
 import axios from "axios";
+import imgTrash from "../assents/img/trash-fill.svg";
 
 class MySquad extends React.Component {
   state = {
@@ -19,6 +20,18 @@ class MySquad extends React.Component {
       console.error(err);
     }
   };
+
+  delete = (event) => {
+    console.log(event.target.name);
+    axios
+      .delete(`https://ironrest.herokuapp.com/NGHeroes/${event.target.name}`)
+      .then((response) => {
+        console.log(response);
+        this.props.history.push("/");
+      })
+      .catch((err) => console.error(err));
+  };
+
   render() {
     return (
       <div className='bg-dark'>
@@ -31,20 +44,14 @@ class MySquad extends React.Component {
                   <div className='card-body'>
                     <div className='d-flex justify-content-between'>
                       <h5 className='card-title'>Squad: {card.squadName}</h5>
-                      <svg
-                        xmlns='http://www.w3.org/2000/svg'
-                        width='20'
-                        height='20'
-                        fill='currentColor'
-                        class='bi bi-trash'
-                        viewBox='0 0 16 16'
-                      >
-                        <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z' />
-                        <path
-                          fill-rule='evenodd'
-                          d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'
-                        />
-                      </svg>
+
+                      <img
+                        onClick={this.delete}
+                        name={card._id}
+                        src={imgTrash}
+                        alt='description'
+                        style={{ width: "3rem" }}
+                      />
                     </div>
                     <p className='card-text'>Creator by: {card.playerName}</p>
                   </div>
