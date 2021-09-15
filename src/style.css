@@ -161,6 +161,9 @@ img {
     text-align: center;
     display: block;
     margin: 0 auto;
+    width: 20%;
+  }
+  .eventHeader {
     width: 50%;
   }
   .event .content {
