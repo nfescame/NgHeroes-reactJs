@@ -16,6 +16,7 @@ function App() {
       <BrowserRouter>
         <Route exact path='/' component={Home} />
         <Switch>
+          <Route path='/listheroes/:obj' component={ListHeroes} />
           <Route path='/listheroes' component={ListHeroes} />
           <Route path='/details/:HeroId' component={Details} />
           <Route path='/mysquad' component={MySquad} />
