@@ -2,8 +2,10 @@
 import React from "react";
 import NavBar from "./NavBar";
 import axios from "axios";
-import imgTrash from "../assents/img/trash-fill.svg";
+import imgTrash from "../assets/img/trash-fill.svg";
+import imgEdit from "../assets/img/edit.svg";
 
+import { Link } from "react-router-dom";
 class MySquad extends React.Component {
   state = {
     all: [],
@@ -22,11 +24,9 @@ class MySquad extends React.Component {
   };
 
   delete = (event) => {
-    console.log(event.target.name);
     axios
       .delete(`https://ironrest.herokuapp.com/NGHeroes/${event.target.name}`)
       .then((response) => {
-        console.log(response);
         this.props.history.push("/");
       })
       .catch((err) => console.error(err));
@@ -44,14 +44,25 @@ class MySquad extends React.Component {
                   <div className='card-body'>
                     <div className='d-flex justify-content-between'>
                       <h5 className='card-title'>Squad: {card.squadName}</h5>
-
-                      <img
-                        onClick={this.delete}
-                        name={card._id}
-                        src={imgTrash}
-                        alt='description'
-                        style={{ width: "3rem" }}
-                      />
+                      <div className='d-flex'>
+                        <img
+                          className='mx-3'
+                          onClick={this.delete}
+                          name={card._id}
+                          src={imgTrash}
+                          alt='description'
+                          style={{ width: "3rem" }}
+                        />
+                        <Link to={`/listheroes/${card._id}`}>
+                          <img
+                            onClick={this.edit}
+                            name={card._id}
+                            src={imgEdit}
+                            alt='description'
+                            style={{ width: "3rem" }}
+                          />
+                        </Link>
+                      </div>
                     </div>
                     <p className='card-text'>Creator by: {card.playerName}</p>
                   </div>
