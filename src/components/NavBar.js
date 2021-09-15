@@ -10,8 +10,8 @@ function NavBar() {
             <img
               src={logo}
               alt=''
-              width='120'
-              height='120'
+              width='80'
+              height='80'
               className='d-inline-block align-text-top mx-3'
             />
           </div>

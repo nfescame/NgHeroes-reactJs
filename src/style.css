@@ -1,32 +1,175 @@
+@import url("https://fonts.googleapis.com/css?family=Quicksand:400,700");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #ecf9ff;
+}
+
+body {
+  color: #272727;
+  font-family: "Quicksand", serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0;
+  padding: 1rem;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 400;
+  text-align: center;
+}
+
+img {
+  height: auto;
+  max-width: 100%;
+  vertical-align: middle;
+}
+
+.btn {
+  color: #ffffff;
+  padding: 0.8rem;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 4px;
+  font-weight: 400;
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+}
+
+.btn:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cards_item {
+  display: flex;
+  padding: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .cards_item {
+    width: 50%;
+  }
+}
+
+@media (min-width: 56rem) {
+  .cards_item {
+    width: 33.3333%;
+  }
+}
+
+.card {
+  background-color: white;
+  border-radius: 0.25rem;
+  box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card_content {
+  padding: 1rem;
+  background: linear-gradient(to bottom left, #ef8d9c 40%, #ffc39e 100%);
+}
+
+.card_title {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: capitalize;
+  margin: 0px;
+}
+
+.card_text {
+  color: #ffffff;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  font-weight: 400;
+}
+.made_by {
+  font-weight: 400;
+  font-size: 13px;
+  margin-top: 35px;
+  text-align: center;
+}
+
 .event {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   position: relative;
   text-align: center;
   display: block;
-  margin: 0 auto;
-  width: 20%;
+  margin: 10 auto;
+  width: 50%;
+}
+.eventHeader {
+  width: 100%;
+}
+.bg-home {
+  background-color: black;
 }
 
 .event .content {
-  background: rgb(39, 64, 201);
+  background: rgb(149, 20, 20);
   color: #fff;
   bottom: 0;
-  height: 68px;
+  height: 2rem;
   left: 0;
   overflow: hidden;
   position: absolute;
   transition: all 0.5s ease;
   width: 100%;
-  border-radius: 20px;
+  border-radius: 10px;
 }
-
+.imgSelect {
+  display: flex;
+}
 .event h3 {
   font: bold 1em/1.125em "Montserrat", Arial, Helvetica, sans-serif;
   letter-spacing: 2px;
   height: 68px;
   margin: 0;
-  padding-top: 20px;
+  padding-top: 10px;
   text-transform: uppercase;
+}
+@media (min-width: 40rem) {
+  .event {
+    margin-bottom: 20px;
+    position: relative;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+  }
+  .event .content {
+    border-radius: 20px;
+    height: 60px;
+  }
+  .event h3 {
+    padding-top: 20px;
+  }
 }
 
 .event .rollover {
@@ -50,4 +193,170 @@
 
 .event:hover .rollover {
   opacity: 1;
+}
+
+.footer-distributed {
+  background-color: #000;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  font: bold 16px sans-serif;
+
+  padding: 5px 50px;
+  margin-top: 20px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left {
+  width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3 {
+  color: #ffffff;
+  font: normal 36px "Cookie", cursive;
+  margin: 0;
+}
+
+.footer-distributed h3 span {
+  color: #5383d3;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links {
+  color: #ffffff;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+.footer-distributed .footer-links a {
+  display: inline-block;
+  line-height: 1.8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-distributed .footer-company-name {
+  color: #8f9296;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center {
+  width: 35%;
+}
+
+.footer-distributed .footer-center i {
+  background-color: #33383b;
+  color: #ffffff;
+  font-size: 25px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 42px;
+  margin: 10px 15px;
+  vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope {
+  font-size: 17px;
+  line-height: 38px;
+}
+
+.footer-distributed .footer-center p {
+  display: inline-block;
+  color: #ffffff;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer-distributed .footer-center p span {
+  display: block;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.footer-distributed .footer-center p a {
+  color: #5383d3;
+  text-decoration: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right {
+  width: 20%;
+}
+
+.footer-distributed .footer-company-about {
+  line-height: 20px;
+  color: #92999f;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.footer-distributed .footer-company-about span {
+  display: block;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons {
+  margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  background-color: #33383b;
+  border-radius: 2px;
+
+  font-size: 20px;
+  color: #ffffff;
+  text-align: center;
+  line-height: 35px;
+
+  margin-right: 3px;
+  margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+  .footer-distributed {
+    font: bold 14px sans-serif;
+  }
+
+  .footer-distributed .footer-left,
+  .footer-distributed .footer-center,
+  .footer-distributed .footer-right {
+    display: block;
+    width: 100%;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  .footer-distributed .footer-center i {
+    margin-left: 0;
+  }
 }
