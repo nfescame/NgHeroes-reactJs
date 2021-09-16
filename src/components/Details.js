@@ -1,7 +1,6 @@
 import React from "react";
 import axios from "axios";
 import NavBar from "./NavBar";
-import arrow from "../assets/img/arrow.svg";
 
 import { Link } from "react-router-dom";
 
