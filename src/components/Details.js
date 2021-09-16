@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import NavBar from "./NavBar";
+import arrow from "../assets/img/arrow.svg";
 
 import { Link } from "react-router-dom";
 
@@ -50,8 +51,12 @@ class Details extends React.Component {
             />
             <div className='card-body d-flex justify-content-between'>
               <h5 className='card-title'>{this.state.name}</h5>
-              <Link to='/listheroes' className='card-link'>
-                Back to List
+              <Link
+                to='/listheroes'
+                className='card-link'
+                style={{ textDecoration: "none" }}
+              >
+                <i class='fas fa-arrow-left'>Back</i>
               </Link>
             </div>
             <ul className='list-group list-group-flush'>

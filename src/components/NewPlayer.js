@@ -3,9 +3,10 @@ class NewPlayer extends React.Component {
   render() {
     return (
       <div>
-        <div className='mx-1'>
+        <div className='mx-3'>
+          <h1 className='text-light'>Create Your Squad Here.</h1>
           <p>
-            <h4 className='text-light'>Your Name</h4>
+            <h4 className='text-light'>Your Name:</h4>
             <form className='namePlayer'>
               <input
                 type='text'
@@ -18,12 +19,12 @@ class NewPlayer extends React.Component {
             </form>
           </p>
           <p>
-            <h4 className='text-light'>Name Squad</h4>
+            <h4 className='text-light'>Name Squad:</h4>
             <form className='nameSquad'>
               <input
                 type='text'
                 id='nameSquad'
-                placeholder='Type a name for your Squad'
+                placeholder='Name Squad'
                 label='Squad'
                 onChange={this.props.handleChangeSquad}
                 value={this.props.state.squadName}
@@ -32,7 +33,7 @@ class NewPlayer extends React.Component {
           </p>
         </div>
 
-        <div className='mx-1'>
+        <div className='mx-3'>
           <p>
             <button type='submit' onClick={this.props.handleSubmitAll}>
               Save

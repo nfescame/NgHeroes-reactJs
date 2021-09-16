@@ -250,27 +250,26 @@ class ListHeroes extends React.Component {
               handleSubmitAll={this.handleSubmitAll}
             />
           </div>
-          <div className='imgSelect d-flex bg-dark'>
+          <div className='imgSelect d-flex '>
             {this.state.allFavImg.map((img, index) => {
               return (
                 <div className=' boxHeroSelect rounded col'>
-                  <div className='border border-dark rounded aling'>
+                  <div className='border border-dark rounded d-flex flex-column align-items-center'>
                     <img
                       className='rounded d-block '
                       src={img.img}
                       alt='description'
                       style={{ width: "8rem" }}
                     />
+                    <img
+                      className=' d-block my-2'
+                      onClick={(event) => this.deleteItem(event, index)}
+                      name={img.img}
+                      src={imgTrash}
+                      alt='description'
+                      style={{ width: "2rem" }}
+                    />
                   </div>
-
-                  <img
-                    className=' d-block my-2'
-                    onClick={(event) => this.deleteItem(event, index)}
-                    name={img.img}
-                    src={imgTrash}
-                    alt='description'
-                    style={{ width: "2rem" }}
-                  />
                 </div>
               );
             })}
@@ -292,7 +291,7 @@ class ListHeroes extends React.Component {
                 className='btn btn-primary fas fa-chevron-up mx-2'
                 htmlFor='btn-check'
               >
-                Show/Hidden Form
+                Show/Hidde Form
               </label>
               <a href='#topo' className='btn btn-outline-danger fixed-bottom'>
                 Voltar ao topo
