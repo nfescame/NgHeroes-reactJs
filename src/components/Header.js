@@ -4,7 +4,7 @@ import Img3 from "../assets/img/heroes.jpg";
 
 function Header() {
   return (
-    <div className=' my-4 bg'>
+    <div className=' my-5 bg'>
       <div className='float-md-start event eventHeader'>
         <img
           src={Img1}

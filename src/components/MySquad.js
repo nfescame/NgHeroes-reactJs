@@ -35,35 +35,41 @@ class MySquad extends React.Component {
   render() {
     return (
       <div className='bg-dark'>
+        <span id='topo'></span>
         <NavBar />
         <div>
+          <a href='#topo' className='btn btn-outline-danger fixed-bottom'>
+            Voltar ao topo
+          </a>
           {this.state.all.map((card) => {
             return (
-              <div className='d-flex mb-5'>
-                <div className='card ' style={{ width: "30rem" }}>
+              <div className='d-flex mb-5 mx-1'>
+                <div className='card cardSquad'>
                   <div className='card-body'>
                     <div className='d-flex justify-content-between'>
-                      <h5 className='card-title'>Squad: {card.squadName}</h5>
-                      <div className='d-flex'>
-                        <img
-                          className='mx-3'
-                          onClick={this.delete}
-                          name={card._id}
-                          src={imgTrash}
-                          alt='description'
-                          style={{ width: "3rem" }}
-                        />
-                        <Link to={`/listheroes/${card._id}`}>
+                      <div className='d-flex align-middle'>
+                        <div className='mx-3'>
+                          <img
+                            onClick={this.delete}
+                            name={card._id}
+                            src={imgTrash}
+                            alt='description'
+                            style={{ width: "2rem" }}
+                          />
+                        </div>
+
+                        <Link className='mx-3' to={`/listheroes/${card._id}`}>
                           <img
                             onClick={this.edit}
                             name={card._id}
                             src={imgEdit}
                             alt='description'
-                            style={{ width: "3rem" }}
+                            style={{ width: "2rem" }}
                           />
                         </Link>
                       </div>
                     </div>
+                    <h3 className='card-title'>Squad: {card.squadName}</h3>
                     <p className='card-text'>Creator by: {card.playerName}</p>
                   </div>
                   <ul className='list-group list-group-flush'>
@@ -83,15 +89,14 @@ class MySquad extends React.Component {
                     </li>
                   </ul>
                 </div>
-                <div className='d-flex'>
+                <div className='imgSquad'>
                   {card.allFavImg.map((elem) => {
                     return (
                       <div>
                         <img
-                          className='rounded'
+                          className='rounded imgUnSquad'
                           src={elem.img}
                           alt='description'
-                          style={{ width: "100%" }}
                         />
                       </div>
                     );
