@@ -16,8 +16,16 @@ function Header() {
           <h3>All Heroes</h3>
 
           <div className='rollover '>
-            <Link to='/listheroes' style={{ color: "white", fontSize: "30px" }}>
-              Here you can find your favorite characters.
+            <Link
+              to='/listheroes'
+              style={{
+                color: "white",
+                fontSize: "25px",
+                backgroundColor: "#951414",
+                borderRadius: "0rem",
+              }}
+            >
+              CLICK TO SEE THE LIST OF CHARACTERS.
             </Link>
           </div>
         </div>
@@ -34,8 +42,16 @@ function Header() {
           <h3>My Squad</h3>
 
           <div className='rollover'>
-            <Link to='/mysquad' style={{ color: "white", fontSize: "30px" }}>
-              See your Squad here.
+            <Link
+              to='/mysquad'
+              style={{
+                color: "white",
+                fontSize: "25px",
+                backgroundColor: "#951414",
+                borderRadius: "0rem",
+              }}
+            >
+              CLICK TO SEE THE CREATED AQUADS.
             </Link>
           </div>
         </div>
