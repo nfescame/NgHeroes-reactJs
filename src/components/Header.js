@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import Img1 from "../assets/img/home7.jpg";
-import Img3 from "../assets/img/home2.jpg";
+import Img1 from "../assets/img/super.jpg";
+import Img2 from "../assets/img/heroes.jpg";
 
 function Header() {
   return (
-    <div className=' my-4'>
+    <div className=' my-5 bg'>
       <div className='float-md-start event eventHeader'>
         <img
           src={Img1}
@@ -16,8 +16,16 @@ function Header() {
           <h3>All Heroes</h3>
 
           <div className='rollover '>
-            <Link to='/listheroes'>
-              Here you can find your favorite characters.
+            <Link
+              to='/listheroes'
+              style={{
+                color: "white",
+                fontSize: "25px",
+                backgroundColor: "#951414",
+                borderRadius: "0rem",
+              }}
+            >
+              CLICK TO SEE THE LIST OF CHARACTERS.
             </Link>
           </div>
         </div>
@@ -25,7 +33,7 @@ function Header() {
 
       <div className='float-md-start event eventHeader'>
         <img
-          src={Img3}
+          src={Img2}
           alt='description'
           style={{ width: "100%", borderRadius: "3%" }}
         />
@@ -34,7 +42,17 @@ function Header() {
           <h3>My Squad</h3>
 
           <div className='rollover'>
-            <Link to='/mysquad'>See your Squad here!</Link>
+            <Link
+              to='/mysquad'
+              style={{
+                color: "white",
+                fontSize: "25px",
+                backgroundColor: "#951414",
+                borderRadius: "0rem",
+              }}
+            >
+              CLICK TO SEE THE CREATED AQUADS.
+            </Link>
           </div>
         </div>
       </div>

@@ -16,8 +16,15 @@ function NavBar() {
             />
           </div>
           <div className='mx-3'>
-            <Link to='/'>
-              <p>Home</p>
+            <Link
+              to='/'
+              style={{
+                paddingLeft: 13,
+                textDecoration: "none",
+                fontSize: "3rem",
+              }}
+            >
+              <i class='fas fa-home'></i>
             </Link>
           </div>
         </div>

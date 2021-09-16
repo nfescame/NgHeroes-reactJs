@@ -54,6 +54,26 @@ class ListHeroes extends React.Component {
     }
   };
 
+  filterPublisher = async (text) => {
+    let newArr = [];
+    try {
+      const response = await axios.get(
+        `https://akabab.github.io/superhero-api/api/all.json`
+      );
+
+      newArr = [];
+      response.data.map((hero) => {
+        if (hero.biography.publisher === text) {
+          newArr.push(hero);
+        }
+        return hero;
+      });
+      this.setState({ allHeroes: [...newArr] });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   filterHeroesName = async (text) => {
     let newArr = [];
     try {
@@ -66,6 +86,7 @@ class ListHeroes extends React.Component {
         if (hero.name.toLowerCase().includes(text.toLowerCase())) {
           newArr.push(hero);
         }
+        return hero;
       });
       this.setState({ allHeroes: [...newArr] });
     } catch (err) {
@@ -100,7 +121,6 @@ class ListHeroes extends React.Component {
 
           .catch((err) => console.error(err));
       } else {
-        console.log("edit");
         this.editSquad(event);
       }
     } else {
@@ -194,7 +214,9 @@ class ListHeroes extends React.Component {
         cloneSpeed -= hero.powerstats.speed;
         cloneStrength -= hero.powerstats.strength;
       }
+      return hero;
     });
+
     cloneArrImg.splice(index, 1);
     cloneArrFive.splice(index, 1);
 
@@ -209,13 +231,18 @@ class ListHeroes extends React.Component {
       strength: cloneStrength,
     });
   };
+  toogle = (event) => {
+    let elementForm = document.getElementById("form");
+    elementForm.classList.toggle("hidden");
+  };
 
   render() {
     return (
-      <div>
+      <div className='bg-dark'>
         <NavBar />
-        <div className='boxImg p-2'>
-          <div>
+        <span id='topo'></span>
+        <div id='form' className='boxImg hidden'>
+          <div style={{ display: "block" }}>
             <NewPlayer
               handleChangeName={this.handleChangeName}
               state={this.state}
@@ -223,48 +250,58 @@ class ListHeroes extends React.Component {
               handleSubmitAll={this.handleSubmitAll}
             />
           </div>
-          <div className='imgSelect d-flex'>
+          <div className='imgSelect d-flex '>
             {this.state.allFavImg.map((img, index) => {
               return (
-                <div className='p-3'>
-                  <div className='border border-dark rounded aling'>
+                <div className=' boxHeroSelect rounded col'>
+                  <div className='border border-dark rounded d-flex flex-column align-items-center'>
                     <img
-                      className='rounded mx-auto d-block '
+                      className='rounded d-block '
                       src={img.img}
                       alt='description'
                       style={{ width: "8rem" }}
                     />
+                    <img
+                      className=' d-block my-2'
+                      onClick={(event) => this.deleteItem(event, index)}
+                      name={img.img}
+                      src={imgTrash}
+                      alt='description'
+                      style={{ width: "2rem" }}
+                    />
                   </div>
-
-                  <img
-                    className='mx-auto d-block'
-                    onClick={(event) => this.deleteItem(event, index)}
-                    name={img.img}
-                    src={imgTrash}
-                    alt='description'
-                    style={{ width: "2rem" }}
-                  />
                 </div>
               );
             })}
           </div>
         </div>
 
-        <div className='row mx-2'>
+        <div className='row mx-0'>
           <div>
             <input
               type='checkbox'
-              class='btn-check'
+              className='btn-check'
               id='btn-check'
               autocomplete='off'
               name='block'
-              onClick={this.props.toogle}
+              onClick={this.toogle}
             />
-            <label class='btn btn-primary' htmlFor='btn-check'>
-              Create Squad
-            </label>
+            <div classNameName='d-flex justify-content-between '>
+              <label
+                className='btn btn-primary fas fa-chevron-up mx-2'
+                htmlFor='btn-check'
+              >
+                Show/Hidde Form
+              </label>
+              <a href='#topo' className='btn btn-outline-danger fixed-bottom'>
+                Voltar ao topo
+              </a>
+            </div>
           </div>
-          <SearchBar filterHeroesName={this.filterHeroesName} />
+          <SearchBar
+            filterHeroesName={this.filterHeroesName}
+            filterPublisher={this.filterPublisher}
+          />
 
           {this.state.allHeroes.map((hero, index) => {
             return (
@@ -277,36 +314,36 @@ class ListHeroes extends React.Component {
 
                 <div className='content'>
                   <h3>{hero.name}</h3>
-                  <div
-                    className='btn-group'
-                    role='group'
-                    aria-label='Basic checkbox toggle button group'
-                  >
-                    <button
-                      name={hero.id}
-                      onClick={(event) => this.handleChangeHero(event, index)}
-                      type='button'
-                      class='btn btn-primary'
+                  <div className='d-flex justify-content-around'>
+                    <div
+                      className='btn-group'
+                      role='group'
+                      aria-label='Basic checkbox toggle button group'
                     >
-                      Add
-                    </button>
+                      <button
+                        name={hero.id}
+                        onClick={(event) => this.handleChangeHero(event, index)}
+                        type='button'
+                        class='btn btn-primary'
+                      >
+                        Add
+                      </button>
+                    </div>
+
+                    <Link
+                      to={`/details/${hero.id}`}
+                      className='btn-group'
+                      role='group'
+                      aria-label='Basic checkbox toggle button group'
+                    >
+                      <button type='button' class='btn btn-primary'>
+                        Detail
+                      </button>
+                    </Link>
                   </div>
 
                   <div className='rollover'>
                     <p>Full Name: {hero.biography.fullName}</p>
-                    <p>First Appearance: {hero.biography.firstAppearance}</p>
-                    <p>Publisher: {hero.biography.publisher}</p>
-                    <p>Place Of Birth: {hero.biography.placeOfBirth}</p>
-                    <p>
-                      Group Affiliation: {hero.connections.groupAffiliation}
-                    </p>
-                    <Link
-                      className='event'
-                      to={`/details/${hero.id}`}
-                      key={hero.id}
-                    >
-                      <h3>Click for more details.</h3>
-                    </Link>
                   </div>
                 </div>
               </div>
