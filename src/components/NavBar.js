@@ -1,4 +1,4 @@
-import logo from "../assents/img/logo1.png";
+import logo from "../assets/img/logo1.png";
 import { Link } from "react-router-dom";
 
 function NavBar() {
@@ -6,7 +6,7 @@ function NavBar() {
     <div>
       <nav className='navbar bg-dark'>
         <div className='container-fluid justify-content-btween'>
-          <div className='navbar-brand' to='/listheroes'>
+          <div className='navbar-brand'>
             <img
               src={logo}
               alt=''

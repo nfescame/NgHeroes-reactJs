@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import Img1 from "../assents/img/home7.jpg";
-import Img3 from "../assents/img/home2.jpg";
+import Img1 from "../assets/img/home7.jpg";
+import Img3 from "../assets/img/home2.jpg";
 
 function Header() {
   return (

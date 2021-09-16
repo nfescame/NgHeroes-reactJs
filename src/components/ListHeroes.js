@@ -1,12 +1,11 @@
 import React from "react";
-//import "bootstrap/dist/css/bootstrap.min.css"
 import axios from "axios";
 import SearchBar from "./SearchBar";
 import NewPlayer from "./NewPlayer";
 import NavBar from "./NavBar";
 import { Link } from "react-router-dom";
+import imgTrash from "../assets/img/trash-fill.svg";
 
-// https://akabab.github.io/superhero-api/api/all.json
 class ListHeroes extends React.Component {
   state = {
     allHeroes: [],
@@ -23,6 +22,27 @@ class ListHeroes extends React.Component {
   };
 
   componentDidMount = async () => {
+    let id = this.props.match.params.obj;
+    if (id) {
+      try {
+        const response = await axios.get(
+          `https://ironrest.herokuapp.com/NGHeroes/${id}`
+        );
+
+        this.setState({ playerName: [response.data.playerName] });
+        this.setState({ squadName: [response.data.squadName] });
+        this.setState({ allFavImg: [...response.data.allFavImg] });
+        this.setState({ allFavFive: [...response.data.allFavFive] });
+        this.setState({ combat: [response.data.combat] });
+        this.setState({ durability: [response.data.durability] });
+        this.setState({ intelligence: [response.data.intelligence] });
+        this.setState({ power: [response.data.power] });
+        this.setState({ speed: [response.data.speed] });
+        this.setState({ strength: [response.data.strength] });
+      } catch (err) {
+        console.error(err);
+      }
+    }
     try {
       const response = await axios.get(
         "https://akabab.github.io/superhero-api/api/all.json"
@@ -33,6 +53,7 @@ class ListHeroes extends React.Component {
       console.error(err);
     }
   };
+
   filterHeroesName = async (text) => {
     let newArr = [];
     try {
@@ -46,7 +67,6 @@ class ListHeroes extends React.Component {
           newArr.push(hero);
         }
       });
-      console.log("arr", newArr);
       this.setState({ allHeroes: [...newArr] });
     } catch (err) {
       console.error(err);
@@ -61,20 +81,48 @@ class ListHeroes extends React.Component {
     this.setState({ squadName: event.target.value });
   };
 
-  handleSubmitAll = (event) => {
+  handleSubmitAll = async (event) => {
     event.preventDefault();
 
-    if (this.state.allFavFive.length === 5) {
-      const stateClone = { ...this.state };
-      delete stateClone.allHeroes;
-      axios
-        .post("https://ironrest.herokuapp.com/NGHeroes", stateClone)
-        .then((response) => {
-          console.log(response);
-          this.props.history.push("/");
-        })
+    if (
+      this.state.allFavFive.length === 5 &&
+      this.state.playerName &&
+      this.state.squadName
+    ) {
+      if (!this.props.match.params.obj) {
+        const stateClone = { ...this.state };
+        delete stateClone.allHeroes;
+        axios
+          .post("https://ironrest.herokuapp.com/NGHeroes", stateClone)
+          .then((response) => {
+            this.props.history.push("/mysquad");
+          })
 
-        .catch((err) => console.error(err));
+          .catch((err) => console.error(err));
+      } else {
+        console.log("edit");
+        this.editSquad(event);
+      }
+    } else {
+      alert("Campos obrigatórios: Name, Name Squaq e 5 personagens");
+    }
+  };
+
+  editSquad = async (event) => {
+    event.preventDefault();
+    let id = this.props.match.params.obj;
+    const stateClone = { ...this.state };
+    delete stateClone.allHeroes;
+    try {
+      const response = await axios.put(
+        `https://ironrest.herokuapp.com/NGHeroes/${id}`,
+        stateClone
+      );
+      console.log(response);
+
+      this.props.history.push("/mysquad");
+    } catch (err) {
+      console.error(err.response);
     }
   };
 
@@ -125,12 +173,48 @@ class ListHeroes extends React.Component {
     }
   };
 
+  deleteItem = (event, index) => {
+    let cloneArrImg = [...this.state.allFavImg];
+    let cloneArrFive = [...this.state.allFavFive];
+    let cloneCombat = [this.state.combat];
+    let cloneDurability = [this.state.durability];
+    let cloneIntelligence = [this.state.intelligence];
+    let clonePower = [this.state.power];
+    let cloneSpeed = [this.state.speed];
+    let cloneStrength = [this.state.strength];
+
+    let id = parseInt(cloneArrFive[index]);
+
+    this.state.allHeroes.map((hero) => {
+      if (hero.id === id) {
+        cloneCombat -= hero.powerstats.combat;
+        cloneDurability -= hero.powerstats.durability;
+        cloneIntelligence -= hero.powerstats.intelligence;
+        clonePower -= hero.powerstats.power;
+        cloneSpeed -= hero.powerstats.speed;
+        cloneStrength -= hero.powerstats.strength;
+      }
+    });
+    cloneArrImg.splice(index, 1);
+    cloneArrFive.splice(index, 1);
+
+    this.setState({
+      allFavImg: [...cloneArrImg],
+      allFavFive: [...cloneArrFive],
+      combat: cloneCombat,
+      durability: cloneDurability,
+      intelligence: cloneIntelligence,
+      power: clonePower,
+      speed: cloneSpeed,
+      strength: cloneStrength,
+    });
+  };
+
   render() {
-    console.log(this.state);
     return (
       <div>
         <NavBar />
-        <div className='d-flex p-2 '>
+        <div className='boxImg p-2'>
           <div>
             <NewPlayer
               handleChangeName={this.handleChangeName}
@@ -140,32 +224,26 @@ class ListHeroes extends React.Component {
             />
           </div>
           <div className='imgSelect d-flex'>
-            {this.state.allFavImg.map((img) => {
+            {this.state.allFavImg.map((img, index) => {
               return (
                 <div className='p-3'>
-                  <div className='border border-dark rounded'>
+                  <div className='border border-dark rounded aling'>
                     <img
-                      className='m-0 rounded '
+                      className='rounded mx-auto d-block '
                       src={img.img}
                       alt='description'
                       style={{ width: "8rem" }}
                     />
                   </div>
 
-                  <svg
-                    xmlns='http://www.w3.org/2000/svg'
-                    width='20'
-                    height='20'
-                    fill='currentColor'
-                    className='bi bi-trash'
-                    viewBox='0 0 16 16'
-                  >
-                    <path d='M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z' />
-                    <path
-                      fill-rule='evenodd'
-                      d='M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z'
-                    />
-                  </svg>
+                  <img
+                    className='mx-auto d-block'
+                    onClick={(event) => this.deleteItem(event, index)}
+                    name={img.img}
+                    src={imgTrash}
+                    alt='description'
+                    style={{ width: "2rem" }}
+                  />
                 </div>
               );
             })}
@@ -173,7 +251,21 @@ class ListHeroes extends React.Component {
         </div>
 
         <div className='row mx-2'>
+          <div>
+            <input
+              type='checkbox'
+              class='btn-check'
+              id='btn-check'
+              autocomplete='off'
+              name='block'
+              onClick={this.props.toogle}
+            />
+            <label class='btn btn-primary' htmlFor='btn-check'>
+              Create Squad
+            </label>
+          </div>
           <SearchBar filterHeroesName={this.filterHeroesName} />
+
           {this.state.allHeroes.map((hero, index) => {
             return (
               <div className='event'>
