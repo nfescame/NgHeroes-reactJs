@@ -46,14 +46,18 @@ class SearchBar extends React.Component {
     return (
       <div className='d-flex justify-content-start my-4 '>
         <div className='searchBar'>
-          <label className='d-flex align-items-center mx-2'>Search: </label>
+          <label className='d-flex align-items-center mx-2 text-light'>
+            Search:{" "}
+          </label>
           <input
             type='text'
             className='input search-bar ms-2 mx-5'
             onChange={this.handleSearch}
             value={this.state.typed}
           />
-          <label className='d-flex align-items-center mx-2'>Publisher: </label>
+          <label className='d-flex align-items-center mx-2 text-light'>
+            Publisher:{" "}
+          </label>
           <select
             className='form-select  mx-2'
             aria-label='Default select example'
