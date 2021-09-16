@@ -10,6 +10,10 @@ class Details extends React.Component {
     img: "",
     id: "",
     powerStats: {},
+    appearance: {},
+    biography: {},
+    work: {},
+    connections: {},
   };
 
   componentDidMount = async () => {
@@ -23,6 +27,10 @@ class Details extends React.Component {
         img: response.data.images.md,
         id: response.data.id,
         powerStats: response.data.powerstats,
+        appearance: response.data.appearance,
+        biography: response.data.biography,
+        work: response.data.work,
+        connections: response.data.connections,
       });
     } catch (err) {
       console.error(err);
@@ -31,17 +39,20 @@ class Details extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='bg-dark'>
         <NavBar />
-        <div className='rounded mx-auto d-flex '>
+        <div className='cardDetais rounded mx-auto'>
           <div className='card m-4' style={{ width: "19rem" }}>
             <img
               src={this.state.img}
               className='card-img-top rounded'
               alt={this.state.id}
             />
-            <div className='card-body'>
+            <div className='card-body d-flex justify-content-between'>
               <h5 className='card-title'>{this.state.name}</h5>
+              <Link to='/listheroes' className='card-link'>
+                Back to List
+              </Link>
             </div>
             <ul className='list-group list-group-flush'>
               <li className='list-group-item'>
@@ -63,13 +74,65 @@ class Details extends React.Component {
                 Strength: {this.state.powerStats.strength}
               </li>
             </ul>
-            <div className='card-body d-flex justify-content-between'>
-              <Link to='/listheroes' className='card-link'>
-                Back to List
-              </Link>
+          </div>
+
+          {/* details */}
+          {/* Appearance */}
+          <div className='mx-5 row row-cols-1'>
+            <div
+              className='card text-white bg-danger mb-3 col'
+              style={{ maxWidth: "30rem" }}
+            >
+              <h1>Appearance</h1>
+              <div className='card-body'>
+                <p>Gender: {this.state.appearance.gender} </p>
+                <p>Race: {this.state.appearance.race}</p>
+                <p>Height: {this.state.appearance.height}</p>
+                <p>Weight: {this.state.appearance.weight}</p>
+                <p>EyeColor: {this.state.appearance.eyeColor}</p>
+                <p>HairColor: {this.state.appearance.hairColor}</p>
+              </div>
+            </div>
+            {/* Biography */}
+            <div
+              className='card text-white bg-primary mb-3 col'
+              style={{ maxWidth: "30rem" }}
+            >
+              <h1>Biography</h1>
+              <div className='card-body'>
+                <p>FullName: {this.state.biography.fullName} </p>
+                <p>AlterEgos: {this.state.biography.alterEgos}</p>
+                <p>Aliases: {this.state.biography.aliases}</p>
+                <p>PlaceOfBirth: {this.state.biography.placeOfBirth}</p>
+                <p>FirstAppearance: {this.state.biography.firstAppearance}</p>
+                <p>Publisher: {this.state.biography.publisher}</p>
+              </div>
+            </div>
+            {/* occupation */}
+            <div
+              className='card text-white bg-success mb-3 col'
+              style={{ maxWidth: "30rem" }}
+            >
+              <h1>Work</h1>
+              <div className='card-body'>
+                <p>Occupation: {this.state.work.occupation} </p>
+                <p>Base: {this.state.work.base}</p>
+              </div>
+            </div>
+            {/* connections */}
+            <div
+              className='card text-white bg-info mb-3 col'
+              style={{ maxWidth: "30rem" }}
+            >
+              <h1>Connections</h1>
+              <div className='card-body'>
+                <p>
+                  Group Affiliation: {this.state.connections.groupAffiliation}
+                </p>
+                <p>Relatives: {this.state.connections.relatives}</p>
+              </div>
             </div>
           </div>
-          <h1>more details</h1>
         </div>
       </div>
     );

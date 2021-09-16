@@ -155,8 +155,14 @@ img {
 .imgUnSquad {
   width: 50%;
 }
+.cardDetais {
+  display: block;
+}
 
 @media (min-width: 40rem) {
+  .cardDetais {
+    display: flex;
+  }
   .imgUnSquad {
     width: 100%;
   }

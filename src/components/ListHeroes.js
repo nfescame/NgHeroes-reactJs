@@ -238,7 +238,7 @@ class ListHeroes extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='bg-dark'>
         <NavBar />
         <span id='topo'></span>
         <div id='form' className='boxImg p-2 hidden'>
@@ -277,7 +277,7 @@ class ListHeroes extends React.Component {
           </div>
         </div>
 
-        <div className='row mx-2'>
+        <div className='row'>
           <div>
             <input
               type='checkbox'
@@ -289,10 +289,10 @@ class ListHeroes extends React.Component {
             />
             <div classNameName='d-flex justify-content-between '>
               <label
-                className='btn btn-primary fas fa-chevron-up'
+                className='btn btn-primary fas fa-chevron-up mx-2'
                 htmlFor='btn-check'
               >
-                Create Squad
+                Show/Hidden Form
               </label>
               <a href='#topo' className='btn btn-outline-danger fixed-bottom'>
                 Voltar ao topo
@@ -345,12 +345,6 @@ class ListHeroes extends React.Component {
 
                   <div className='rollover'>
                     <p>Full Name: {hero.biography.fullName}</p>
-                    <p>First Appearance: {hero.biography.firstAppearance}</p>
-                    <p>Publisher: {hero.biography.publisher}</p>
-                    <p>Place Of Birth: {hero.biography.placeOfBirth}</p>
-                    <p>
-                      Group Affiliation: {hero.connections.groupAffiliation}
-                    </p>
                   </div>
                 </div>
               </div>

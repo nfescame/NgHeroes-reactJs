@@ -27,7 +27,8 @@ class MySquad extends React.Component {
     axios
       .delete(`https://ironrest.herokuapp.com/NGHeroes/${event.target.name}`)
       .then((response) => {
-        this.props.history.push("/");
+        this.componentDidMount();
+        // this.props.history.push("/mysquad");
       })
       .catch((err) => console.error(err));
   };
