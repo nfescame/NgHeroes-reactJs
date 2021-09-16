@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
 import Img1 from "../assets/img/home7.jpg";
-import Img3 from "../assets/img/home2.jpg";
+import Img3 from "../assets/img/heroes.jpg";
 
 function Header() {
   return (
-    <div className=' my-4'>
+    <div className=' my-4 bg'>
       <div className='float-md-start event eventHeader'>
         <img
           src={Img1}
           alt='description'
-          style={{ width: "100%", borderRadius: "3%" }}
+          style={{ width: "72%", borderRadius: "3%" }}
         />
 
         <div className='content'>

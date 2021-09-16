@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import NavBar from "./NavBar";
 
 import { Link } from "react-router-dom";
 
@@ -26,46 +27,47 @@ class Details extends React.Component {
     } catch (err) {
       console.error(err);
     }
-
-    console.log(this.state);
   };
 
   render() {
     return (
       <div>
-        <div className='card m-4' style={{ width: "19rem" }}>
-          <img
-            src={this.state.img}
-            className='card-img-top rounded'
-            alt={this.state.id}
-          />
-          <div className='card-body'>
-            <h5 className='card-title'>{this.state.name}</h5>
-          </div>
-          <ul className='list-group list-group-flush'>
-            <li className='list-group-item'>
-              Combat: {this.state.powerStats.combat}
-            </li>
-            <li className='list-group-item'>
-              Durability: {this.state.powerStats.durability}
-            </li>
-            <li className='list-group-item'>
-              Intelligence: {this.state.powerStats.intelligence}
-            </li>
-            <li className='list-group-item'>
-              Power: {this.state.powerStats.power}
-            </li>
-            <li className='list-group-item'>
-              Speed: {this.state.powerStats.speed}
-            </li>
-            <li className='list-group-item'>
-              Strength: {this.state.powerStats.strength}
-            </li>
-          </ul>
-          <div className='card-body d-flex justify-content-between'>
-            <Link to='/listheroes' className='card-link'>
-              Back to List
-            </Link>
+        <NavBar />
+        <div className='rounded mx-auto d-block'>
+          <div className='card m-4' style={{ width: "19rem" }}>
+            <img
+              src={this.state.img}
+              className='card-img-top rounded'
+              alt={this.state.id}
+            />
+            <div className='card-body'>
+              <h5 className='card-title'>{this.state.name}</h5>
+            </div>
+            <ul className='list-group list-group-flush'>
+              <li className='list-group-item'>
+                Combat: {this.state.powerStats.combat}
+              </li>
+              <li className='list-group-item'>
+                Durability: {this.state.powerStats.durability}
+              </li>
+              <li className='list-group-item'>
+                Intelligence: {this.state.powerStats.intelligence}
+              </li>
+              <li className='list-group-item'>
+                Power: {this.state.powerStats.power}
+              </li>
+              <li className='list-group-item'>
+                Speed: {this.state.powerStats.speed}
+              </li>
+              <li className='list-group-item'>
+                Strength: {this.state.powerStats.strength}
+              </li>
+            </ul>
+            <div className='card-body d-flex justify-content-between'>
+              <Link to='/listheroes' className='card-link'>
+                Back to List
+              </Link>
+            </div>
           </div>
         </div>
       </div>
