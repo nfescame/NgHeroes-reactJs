@@ -8,7 +8,7 @@ function Home() {
   return (
     <div className='bg-home'>
       <NavBar />
-      <div className='row'>
+      <div className='row mx-0'>
         <Header />
         <Footer />
       </div>

@@ -16,8 +16,8 @@ function NavBar() {
             />
           </div>
           <div className='mx-3'>
-            <Link to='/'>
-              <p>Home</p>
+            <Link to='/' style={{ paddingLeft: 13, textDecoration: "none" }}>
+              Home
             </Link>
           </div>
         </div>
