@@ -54,6 +54,26 @@ class ListHeroes extends React.Component {
     }
   };
 
+  filterPublisher = async (text) => {
+    let newArr = [];
+    try {
+      const response = await axios.get(
+        `https://akabab.github.io/superhero-api/api/all.json`
+      );
+
+      newArr = [];
+      response.data.map((hero) => {
+        if (hero.biography.publisher === text) {
+          newArr.push(hero);
+        }
+        return hero;
+      });
+      this.setState({ allHeroes: [...newArr] });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   filterHeroesName = async (text) => {
     let newArr = [];
     try {
@@ -66,6 +86,7 @@ class ListHeroes extends React.Component {
         if (hero.name.toLowerCase().includes(text.toLowerCase())) {
           newArr.push(hero);
         }
+        return hero;
       });
       this.setState({ allHeroes: [...newArr] });
     } catch (err) {
@@ -100,7 +121,6 @@ class ListHeroes extends React.Component {
 
           .catch((err) => console.error(err));
       } else {
-        console.log("edit");
         this.editSquad(event);
       }
     } else {
@@ -194,7 +214,9 @@ class ListHeroes extends React.Component {
         cloneSpeed -= hero.powerstats.speed;
         cloneStrength -= hero.powerstats.strength;
       }
+      return hero;
     });
+
     cloneArrImg.splice(index, 1);
     cloneArrFive.splice(index, 1);
 
@@ -209,13 +231,17 @@ class ListHeroes extends React.Component {
       strength: cloneStrength,
     });
   };
+  toogle = (event) => {
+    let elementForm = document.getElementById("form");
+    elementForm.classList.toggle("hidden");
+  };
 
   render() {
     return (
       <div>
         <NavBar />
-        <div className='boxImg p-2'>
-          <div>
+        <div id='form' className='boxImg p-2 hidden'>
+          <div style={{ display: "block" }}>
             <NewPlayer
               handleChangeName={this.handleChangeName}
               state={this.state}
@@ -258,13 +284,16 @@ class ListHeroes extends React.Component {
               id='btn-check'
               autocomplete='off'
               name='block'
-              onClick={this.props.toogle}
+              onClick={this.toogle}
             />
             <label class='btn btn-primary' htmlFor='btn-check'>
               Create Squad
             </label>
           </div>
-          <SearchBar filterHeroesName={this.filterHeroesName} />
+          <SearchBar
+            filterHeroesName={this.filterHeroesName}
+            filterPublisher={this.filterPublisher}
+          />
 
           {this.state.allHeroes.map((hero, index) => {
             return (
@@ -277,19 +306,32 @@ class ListHeroes extends React.Component {
 
                 <div className='content'>
                   <h3>{hero.name}</h3>
-                  <div
-                    className='btn-group'
-                    role='group'
-                    aria-label='Basic checkbox toggle button group'
-                  >
-                    <button
-                      name={hero.id}
-                      onClick={(event) => this.handleChangeHero(event, index)}
-                      type='button'
-                      class='btn btn-primary'
+                  <div className='d-flex justify-content-around'>
+                    <div
+                      className='btn-group'
+                      role='group'
+                      aria-label='Basic checkbox toggle button group'
                     >
-                      Add
-                    </button>
+                      <button
+                        name={hero.id}
+                        onClick={(event) => this.handleChangeHero(event, index)}
+                        type='button'
+                        class='btn btn-primary'
+                      >
+                        Add
+                      </button>
+                    </div>
+
+                    <Link
+                      to={`/details/${hero.id}`}
+                      className='btn-group'
+                      role='group'
+                      aria-label='Basic checkbox toggle button group'
+                    >
+                      <button type='button' class='btn btn-primary'>
+                        Detail
+                      </button>
+                    </Link>
                   </div>
 
                   <div className='rollover'>
@@ -300,13 +342,6 @@ class ListHeroes extends React.Component {
                     <p>
                       Group Affiliation: {hero.connections.groupAffiliation}
                     </p>
-                    <Link
-                      className='event'
-                      to={`/details/${hero.id}`}
-                      key={hero.id}
-                    >
-                      <h3>Click for more details.</h3>
-                    </Link>
                   </div>
                 </div>
               </div>

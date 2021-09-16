@@ -139,6 +139,7 @@ img {
 .boxImg {
   display: block;
 }
+
 @media (min-width: 40rem) {
   .boxImg {
     display: flex;
@@ -350,4 +351,7 @@ img {
   .footer-distributed .footer-center i {
     margin-left: 0;
   }
+}
+.hidden {
+  display: none;
 }
