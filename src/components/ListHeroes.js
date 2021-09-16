@@ -240,6 +240,7 @@ class ListHeroes extends React.Component {
     return (
       <div>
         <NavBar />
+        <span id='topo'></span>
         <div id='form' className='boxImg p-2 hidden'>
           <div style={{ display: "block" }}>
             <NewPlayer
@@ -249,10 +250,10 @@ class ListHeroes extends React.Component {
               handleSubmitAll={this.handleSubmitAll}
             />
           </div>
-          <div className='imgSelect d-flex'>
+          <div className='imgSelect d-flex bg-dark'>
             {this.state.allFavImg.map((img, index) => {
               return (
-                <div className='p-3'>
+                <div className='p-3 boxHeroSelect rounded col'>
                   <div className='border border-dark rounded aling'>
                     <img
                       className='rounded mx-auto d-block '
@@ -263,7 +264,7 @@ class ListHeroes extends React.Component {
                   </div>
 
                   <img
-                    className='mx-auto d-block'
+                    className='mx-auto d-block my-2'
                     onClick={(event) => this.deleteItem(event, index)}
                     name={img.img}
                     src={imgTrash}
@@ -280,15 +281,23 @@ class ListHeroes extends React.Component {
           <div>
             <input
               type='checkbox'
-              class='btn-check'
+              className='btn-check'
               id='btn-check'
               autocomplete='off'
               name='block'
               onClick={this.toogle}
             />
-            <label class='btn btn-primary' htmlFor='btn-check'>
-              Create Squad
-            </label>
+            <div classNameName='d-flex justify-content-between '>
+              <label
+                className='btn btn-primary fas fa-chevron-up'
+                htmlFor='btn-check'
+              >
+                Create Squad
+              </label>
+              <a href='#topo' className='btn btn-outline-danger fixed-bottom'>
+                Voltar ao topo
+              </a>
+            </div>
           </div>
           <SearchBar
             filterHeroesName={this.filterHeroesName}

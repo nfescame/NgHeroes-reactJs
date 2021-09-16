@@ -5,7 +5,7 @@ class NewPlayer extends React.Component {
       <div>
         <div>
           <p>
-            <h4>Insert your Name</h4>
+            <h4>Your Name</h4>
             <form className='namePlayer'>
               <input
                 type='text'
@@ -18,7 +18,7 @@ class NewPlayer extends React.Component {
             </form>
           </p>
           <p>
-            <h4>Insert a name for your Squad</h4>
+            <h4>Name Squad</h4>
             <form className='nameSquad'>
               <input
                 type='text'
@@ -31,7 +31,7 @@ class NewPlayer extends React.Component {
             </form>
           </p>
         </div>
-        <h4> Choose your Heroes </h4>
+        <h4 className='my-5'> Choose your Heroes </h4>
 
         <div>
           <p>

@@ -16,7 +16,7 @@ body {
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0;
-  padding: 1rem;
+  padding: 0rem;
 }
 
 .main {
@@ -139,8 +139,41 @@ img {
 .boxImg {
   display: block;
 }
+.searchBar {
+  display: block;
+}
+.boxHeroSelect {
+  width: 5rem;
+}
+.cardSquad {
+  width: 50rem;
+}
+.imgSquad {
+  width: 20rem;
+  display: block;
+}
+.imgUnSquad {
+  width: 50%;
+}
 
 @media (min-width: 40rem) {
+  .imgUnSquad {
+    width: 100%;
+  }
+  .imgSquad {
+    width: 100rem;
+    display: flex;
+  }
+  .cardSquad {
+    width: 20rem;
+  }
+  .boxHeroSelect {
+    width: 10rem;
+    margin: 2px;
+  }
+  .searchBar {
+    display: flex;
+  }
   .boxImg {
     display: flex;
   }
@@ -195,8 +228,9 @@ img {
   text-align: left;
   font: bold 16px sans-serif;
 
-  padding: 5px 50px;
+  padding: 50px 50px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .footer-distributed .footer-left,

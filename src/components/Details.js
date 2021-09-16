@@ -33,7 +33,7 @@ class Details extends React.Component {
     return (
       <div>
         <NavBar />
-        <div className='rounded mx-auto d-block'>
+        <div className='rounded mx-auto d-flex '>
           <div className='card m-4' style={{ width: "19rem" }}>
             <img
               src={this.state.img}
@@ -69,6 +69,7 @@ class Details extends React.Component {
               </Link>
             </div>
           </div>
+          <h1>more details</h1>
         </div>
       </div>
     );
