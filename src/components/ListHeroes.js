@@ -241,7 +241,7 @@ class ListHeroes extends React.Component {
       <div className='bg-dark'>
         <NavBar />
         <span id='topo'></span>
-        <div id='form' className='boxImg p-2 hidden'>
+        <div id='form' className='boxImg hidden'>
           <div style={{ display: "block" }}>
             <NewPlayer
               handleChangeName={this.handleChangeName}
@@ -253,10 +253,10 @@ class ListHeroes extends React.Component {
           <div className='imgSelect d-flex bg-dark'>
             {this.state.allFavImg.map((img, index) => {
               return (
-                <div className='p-3 boxHeroSelect rounded col'>
+                <div className=' boxHeroSelect rounded col'>
                   <div className='border border-dark rounded aling'>
                     <img
-                      className='rounded mx-auto d-block '
+                      className='rounded d-block '
                       src={img.img}
                       alt='description'
                       style={{ width: "8rem" }}
@@ -264,7 +264,7 @@ class ListHeroes extends React.Component {
                   </div>
 
                   <img
-                    className='mx-auto d-block my-2'
+                    className=' d-block my-2'
                     onClick={(event) => this.deleteItem(event, index)}
                     name={img.img}
                     src={imgTrash}
@@ -277,7 +277,7 @@ class ListHeroes extends React.Component {
           </div>
         </div>
 
-        <div className='row'>
+        <div className='row mx-0'>
           <div>
             <input
               type='checkbox'
