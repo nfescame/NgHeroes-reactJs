@@ -7,7 +7,7 @@ This project is a recreation CRUD system. There´s an API of more than 700 heroe
 We are in the 6th week of the Ironhack´s bootcamp WebDev56 in 2021. The goal of this project is running all the CRUD properties. 
 
 ## Start now!
-[Click here](https://nfescame.github.io/Ligue-QuatroProject-game/) for start.
+[Click here](https://wizardly-wescoff-769ee0.netlify.app/listheroes) for start.
 
 ## Git
 [Click here](https://github.com/nfescame/Project2) for start.
