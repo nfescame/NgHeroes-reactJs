@@ -42,6 +42,7 @@ class ListHeroes extends React.Component {
       } catch (err) {
         console.error(err);
       }
+      this.toogle();
     }
     try {
       const response = await axios.get(
@@ -287,6 +288,9 @@ class ListHeroes extends React.Component {
               onClick={this.toogle}
             />
             <div classNameName='d-flex justify-content-between '>
+              <p className='text-light mx-2'>
+                <b>Click to create a squad. </b>
+              </p>
               <label
                 className='btn btn-primary fas fa-chevron-up mx-2'
                 htmlFor='btn-check'

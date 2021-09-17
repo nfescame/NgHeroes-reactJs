@@ -70,23 +70,31 @@ class MySquad extends React.Component {
                         </Link>
                       </div>
                     </div>
-                    <h3 className='card-title'>Squad: {card.squadName}</h3>
-                    <p className='card-text'>Creator by: {card.playerName}</p>
+                    <h3 className='card-title'>
+                      <b>Squad:</b> {card.squadName}
+                    </h3>
+                    <p className='card-text'>
+                      <b>Creator by:</b> {card.playerName}
+                    </p>
                   </div>
                   <ul className='list-group list-group-flush'>
                     <li className='list-group-item'>
-                      Combat: {card.combat / 5}
+                      <b>Combat:</b> {card.combat / 5}
                     </li>
                     <li className='list-group-item'>
-                      Durability: {card.durability / 5}
+                      <b>Durability:</b> {card.durability / 5}
                     </li>
                     <li className='list-group-item'>
-                      Intelligence: {card.intelligence / 5}
+                      <b>Intelligence:</b> {card.intelligence / 5}
                     </li>
-                    <li className='list-group-item'>Power: {card.power / 5}</li>
-                    <li className='list-group-item'>Speed: {card.speed / 5}</li>
                     <li className='list-group-item'>
-                      Strength: {card.strength / 5}
+                      <b>Power:</b> {card.power / 5}
+                    </li>
+                    <li className='list-group-item'>
+                      <b>Speed:</b> {card.speed / 5}
+                    </li>
+                    <li className='list-group-item'>
+                      <b>Strength:</b> {card.strength / 5}
                     </li>
                   </ul>
                 </div>
