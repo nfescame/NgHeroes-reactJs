@@ -9,11 +9,8 @@ We are in the 6th week of the Ironhack´s bootcamp WebDev56 in 2021. The goal of
 ## Start now!
 [Click here](https://wizardly-wescoff-769ee0.netlify.app/listheroes) for start.
 
-## Git
-[Click here](https://github.com/nfescame/Project2) for start.
-
 ## Find out more about this project
 [Click here](https://docs.google.com/presentation/d/e/2PACX-1vQ3clMluDjuytIZZkM2Czv6V2gZDh7M5klwpIGF_ibL7ArlHP8vw-YByFJGUbtdMZHL608gy0-qrWgX/pub?start=false&loop=false&delayms=60000&slide=id.gec1066e1e3_0_636 )
 
-
+![image info](./pictures/image.png)
 
