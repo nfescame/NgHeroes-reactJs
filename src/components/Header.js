@@ -21,7 +21,6 @@ function Header() {
               style={{
                 color: "white",
                 fontSize: "25px",
-                backgroundColor: "#951414",
                 borderRadius: "0rem",
               }}
             >
@@ -47,11 +46,10 @@ function Header() {
               style={{
                 color: "white",
                 fontSize: "25px",
-                backgroundColor: "#951414",
                 borderRadius: "0rem",
               }}
             >
-              CLICK TO SEE THE CREATED AQUADS.
+              CLICK TO SEE THE CREATED SQUADS.
             </Link>
           </div>
         </div>
