@@ -64,22 +64,22 @@ class Details extends React.Component {
             </div>
             <ul className='list-group list-group-flush'>
               <li className='list-group-item'>
-                Combat: {this.state.powerStats.combat}
+                <b>Combat:</b> {this.state.powerStats.combat}
               </li>
               <li className='list-group-item'>
-                Durability: {this.state.powerStats.durability}
+                <b>Durability:</b> {this.state.powerStats.durability}
               </li>
               <li className='list-group-item'>
-                Intelligence: {this.state.powerStats.intelligence}
+                <b>Intelligence:</b> {this.state.powerStats.intelligence}
               </li>
               <li className='list-group-item'>
-                Power: {this.state.powerStats.power}
+                <b>Power:</b> {this.state.powerStats.power}
               </li>
               <li className='list-group-item'>
-                Speed: {this.state.powerStats.speed}
+                <b>Speed:</b> {this.state.powerStats.speed}
               </li>
               <li className='list-group-item'>
-                Strength: {this.state.powerStats.strength}
+                <b>Strength:</b> {this.state.powerStats.strength}
               </li>
             </ul>
           </div>
@@ -93,12 +93,24 @@ class Details extends React.Component {
             >
               <h1>Appearance</h1>
               <div className='card-body'>
-                <p>Gender: {this.state.appearance.gender} </p>
-                <p>Race: {this.state.appearance.race}</p>
-                <p>Height: {this.state.height}</p>
-                <p>Weight: {this.state.weight}</p>
-                <p>EyeColor: {this.state.appearance.eyeColor}</p>
-                <p>HairColor: {this.state.appearance.hairColor}</p>
+                <p>
+                  <b>Gender:</b> {this.state.appearance.gender}{" "}
+                </p>
+                <p>
+                  <b>Race:</b> {this.state.appearance.race}
+                </p>
+                <p>
+                  <b>Height:</b> {this.state.height}
+                </p>
+                <p>
+                  <b>Weight:</b> {this.state.weight}
+                </p>
+                <p>
+                  <b>Eye Color:</b> {this.state.appearance.eyeColor}
+                </p>
+                <p>
+                  <b>Hair Color:</b> {this.state.appearance.hairColor}
+                </p>
               </div>
             </div>
             {/* Biography */}
@@ -108,12 +120,25 @@ class Details extends React.Component {
             >
               <h1>Biography</h1>
               <div className='card-body'>
-                <p>FullName: {this.state.biography.fullName} </p>
-                <p>AlterEgos: {this.state.biography.alterEgos}</p>
-                <p>Aliases: {this.state.biography.aliases}</p>
-                <p>PlaceOfBirth: {this.state.biography.placeOfBirth}</p>
-                <p>FirstAppearance: {this.state.biography.firstAppearance}</p>
-                <p>Publisher: {this.state.biography.publisher}</p>
+                <p>
+                  <b>Full Name:</b> {this.state.biography.fullName}{" "}
+                </p>
+                <p>
+                  <b>Alter Egos:</b> {this.state.biography.alterEgos}
+                </p>
+                <p>
+                  <b>Aliases:</b> {this.state.biography.aliases}
+                </p>
+                <p>
+                  <b>Place Of Birth:</b> {this.state.biography.placeOfBirth}
+                </p>
+                <p>
+                  <b>First Appearance:</b>
+                  {this.state.biography.firstAppearance}
+                </p>
+                <p>
+                  <b>Publisher:</b> {this.state.biography.publisher}
+                </p>
               </div>
             </div>
             {/* occupation */}
@@ -123,8 +148,12 @@ class Details extends React.Component {
             >
               <h1>Work</h1>
               <div className='card-body'>
-                <p>Occupation: {this.state.work.occupation} </p>
-                <p>Base: {this.state.work.base}</p>
+                <p>
+                  <b>Occupation:</b> {this.state.work.occupation}{" "}
+                </p>
+                <p>
+                  <b>Base:</b> {this.state.work.base}
+                </p>
               </div>
             </div>
             {/* connections */}
@@ -135,9 +164,12 @@ class Details extends React.Component {
               <h1>Connections</h1>
               <div className='card-body'>
                 <p>
-                  Group Affiliation: {this.state.connections.groupAffiliation}
+                  <b>Group Affiliation:</b>{" "}
+                  {this.state.connections.groupAffiliation}
                 </p>
-                <p>Relatives: {this.state.connections.relatives}</p>
+                <p>
+                  <b>Relatives:</b> {this.state.connections.relatives}
+                </p>
               </div>
             </div>
           </div>

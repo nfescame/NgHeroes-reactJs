@@ -35,7 +35,11 @@ class NewPlayer extends React.Component {
 
         <div className='mx-3'>
           <p>
-            <button type='submit' onClick={this.props.handleSubmitAll}>
+            <button
+              type='submit'
+              class='btn btn-primary'
+              onClick={this.props.handleSubmitAll}
+            >
               Save
             </button>
           </p>
