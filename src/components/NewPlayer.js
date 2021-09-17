@@ -9,9 +9,10 @@ class NewPlayer extends React.Component {
             <h4 className='text-light'>Your Name:</h4>
             <form className='namePlayer'>
               <input
+                maxlength='15'
                 type='text'
                 id='namePlayer'
-                placeholder='Name'
+                placeholder='limited to 15 characters'
                 label='Name'
                 onChange={this.props.handleChangeName}
                 value={this.props.state.playerName}
@@ -22,9 +23,10 @@ class NewPlayer extends React.Component {
             <h4 className='text-light'>Name Squad:</h4>
             <form className='nameSquad'>
               <input
+                maxlength='8'
                 type='text'
                 id='nameSquad'
-                placeholder='Name Squad'
+                placeholder='limited to 8 characters'
                 label='Squad'
                 onChange={this.props.handleChangeSquad}
                 value={this.props.state.squadName}
@@ -43,7 +45,7 @@ class NewPlayer extends React.Component {
               Save
             </button>
           </p>
-          <h4 className='my-5 text-light'> Choose your Heroes </h4>
+          <h4 className='my-2 text-light'> Choose your Heroes </h4>
         </div>
       </div>
     );

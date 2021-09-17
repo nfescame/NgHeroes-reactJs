@@ -189,6 +189,7 @@ class ListHeroes extends React.Component {
         speed: cloneSpeed,
         strength: cloneStrength,
       });
+      this.toogleColorBtn(event);
     } else {
       alert("Character be select");
     }
@@ -231,10 +232,20 @@ class ListHeroes extends React.Component {
       speed: cloneSpeed,
       strength: cloneStrength,
     });
+    this.toogleColorBtn(id);
   };
   toogle = (event) => {
     let elementForm = document.getElementById("form");
     elementForm.classList.toggle("hidden");
+  };
+
+  toogleColorBtn = (event) => {
+    let id;
+
+    isNaN(event) ? (id = event.target.name) : (id = event);
+
+    let elementBtn = document.getElementById(id);
+    elementBtn.classList.toggle("btn-danger");
   };
 
   render() {
@@ -242,6 +253,17 @@ class ListHeroes extends React.Component {
       <div className='bg-dark'>
         <NavBar />
         <span id='topo'></span>
+        <div classNameName='d-flex justify-content-between '>
+          <label
+            className='btn btn-primary fas fa-chevron-up mx-3 my-3'
+            htmlFor='btn-check'
+          >
+            Show/Hidde Form
+          </label>
+          <a href='#topo' className='btn btn-outline-danger fixed-bottom'>
+            Voltar ao topo
+          </a>
+        </div>
         <div id='form' className='boxImg hidden'>
           <div style={{ display: "block" }}>
             <NewPlayer
@@ -263,6 +285,7 @@ class ListHeroes extends React.Component {
                       style={{ width: "8rem" }}
                     />
                     <img
+                      id={img.id}
                       className=' d-block my-2'
                       onClick={(event) => this.deleteItem(event, index)}
                       name={img.img}
@@ -287,20 +310,6 @@ class ListHeroes extends React.Component {
               name='block'
               onClick={this.toogle}
             />
-            <div classNameName='d-flex justify-content-between '>
-              <p className='text-light mx-2'>
-                <b>Click to create a squad. </b>
-              </p>
-              <label
-                className='btn btn-primary fas fa-chevron-up mx-2'
-                htmlFor='btn-check'
-              >
-                Show/Hidde Form
-              </label>
-              <a href='#topo' className='btn btn-outline-danger fixed-bottom'>
-                Voltar ao topo
-              </a>
-            </div>
           </div>
           <SearchBar
             filterHeroesName={this.filterHeroesName}
@@ -325,6 +334,8 @@ class ListHeroes extends React.Component {
                       aria-label='Basic checkbox toggle button group'
                     >
                       <button
+                        id={hero.id}
+                        className='colorBtn'
                         name={hero.id}
                         onClick={(event) => this.handleChangeHero(event, index)}
                         type='button'

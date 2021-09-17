@@ -1,6 +1,7 @@
 /* eslint-disable no-lone-blocks */
 import React from "react";
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 import axios from "axios";
 import imgTrash from "../assets/img/trash-fill.svg";
 import imgEdit from "../assets/img/edit.svg";
@@ -115,6 +116,7 @@ class MySquad extends React.Component {
             );
           })}
         </div>
+        <Footer />
       </div>
     );
   }
