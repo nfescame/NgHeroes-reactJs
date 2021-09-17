@@ -9,6 +9,8 @@ class Details extends React.Component {
     name: "",
     img: "",
     id: "",
+    height: "",
+    weight: "",
     powerStats: {},
     appearance: {},
     biography: {},
@@ -26,6 +28,8 @@ class Details extends React.Component {
         name: response.data.name,
         img: response.data.images.md,
         id: response.data.id,
+        height: response.data.appearance.height[1],
+        weight: response.data.appearance.weight[1],
         powerStats: response.data.powerstats,
         appearance: response.data.appearance,
         biography: response.data.biography,
@@ -42,7 +46,7 @@ class Details extends React.Component {
       <div className='bg-dark'>
         <NavBar />
         <div className='cardDetais rounded mx-auto'>
-          <div className='card m-4' style={{ width: "19rem" }}>
+          <div className='card m-1 boxImgDetails'>
             <img
               src={this.state.img}
               className='card-img-top rounded'
@@ -85,14 +89,14 @@ class Details extends React.Component {
           <div className='mx-5 row row-cols-1'>
             <div
               className='card text-white bg-danger mb-3 col'
-              style={{ maxWidth: "30rem" }}
+              style={{ maxWidth: "35rem" }}
             >
               <h1>Appearance</h1>
               <div className='card-body'>
                 <p>Gender: {this.state.appearance.gender} </p>
                 <p>Race: {this.state.appearance.race}</p>
-                <p>Height: {this.state.appearance.height}</p>
-                <p>Weight: {this.state.appearance.weight}</p>
+                <p>Height: {this.state.height}</p>
+                <p>Weight: {this.state.weight}</p>
                 <p>EyeColor: {this.state.appearance.eyeColor}</p>
                 <p>HairColor: {this.state.appearance.hairColor}</p>
               </div>
@@ -100,7 +104,7 @@ class Details extends React.Component {
             {/* Biography */}
             <div
               className='card text-white bg-primary mb-3 col'
-              style={{ maxWidth: "30rem" }}
+              style={{ maxWidth: "35rem" }}
             >
               <h1>Biography</h1>
               <div className='card-body'>
@@ -115,7 +119,7 @@ class Details extends React.Component {
             {/* occupation */}
             <div
               className='card text-white bg-success mb-3 col'
-              style={{ maxWidth: "30rem" }}
+              style={{ maxWidth: "35rem" }}
             >
               <h1>Work</h1>
               <div className='card-body'>
@@ -126,7 +130,7 @@ class Details extends React.Component {
             {/* connections */}
             <div
               className='card text-white bg-info mb-3 col'
-              style={{ maxWidth: "30rem" }}
+              style={{ maxWidth: "35rem" }}
             >
               <h1>Connections</h1>
               <div className='card-body'>
