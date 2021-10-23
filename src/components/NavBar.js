@@ -9,9 +9,9 @@ function NavBar() {
           <div className='navbar-brand'>
             <img
               src={logo}
-              alt=''
-              width='80'
-              height='80'
+              alt='logo'
+              width='60'
+              height='60'
               className='d-inline-block align-text-top mx-3'
             />
           </div>
@@ -21,7 +21,7 @@ function NavBar() {
               style={{
                 paddingLeft: 13,
                 textDecoration: "none",
-                fontSize: "3rem",
+                fontSize: "2rem",
               }}
             >
               <i class='fas fa-home'></i>
